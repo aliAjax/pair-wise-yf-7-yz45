@@ -77,9 +77,12 @@
           <div class="status-strip">
             <div>
               <strong id="selectedTypeLabel">未选择字模</strong>
-              <span>点击字模后，在版面格子中落字，也可拖拽字模到版面。</span>
+              <span>点空格落字；点已有字的格子可标记磨损、同字换字并逐格确认。</span>
             </div>
-            <div id="shortageBadge" class="badge ok">数量充足</div>
+            <div class="strip-badges">
+              <div id="proofBadge" class="badge muted">未落字</div>
+              <div id="shortageBadge" class="badge ok">余量充足</div>
+            </div>
           </div>
           <div id="stage" class="stage" aria-label="排版画布"></div>
         </section>
@@ -89,6 +92,7 @@
             <h2>草稿与核对</h2>
             <span id="placedCount"></span>
           </div>
+          <div id="proofSummary" class="proof-summary"></div>
           <div id="usageList" class="usage-list"></div>
           <div class="divider"></div>
           <h3>已保存草稿</h3>
@@ -96,6 +100,18 @@
         </aside>
       </section>
     </main>
+
+    <div id="proofBackdrop" class="proof-backdrop" hidden>
+      <div class="proof-dialog" role="dialog" aria-modal="true" aria-labelledby="proofDialogTitle">
+        <div class="proof-dialog-head">
+          <h3 id="proofDialogTitle">格子校样</h3>
+          <button type="button" class="mini-btn" data-proof-close title="关闭">×</button>
+        </div>
+        <div id="proofBody" class="proof-body"></div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" hidden></div>
 
     <script src="app.js"></script>
   </body>
