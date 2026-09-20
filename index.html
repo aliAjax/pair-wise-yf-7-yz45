@@ -77,11 +77,15 @@
           <div class="status-strip">
             <div>
               <strong id="selectedTypeLabel">未选择字模</strong>
-              <span>点击字模后，在版面格子中落字，也可拖拽字模到版面。</span>
+              <span>点击字模后在空格落字；点击已落字的格子可校样、替字与逐格确认。</span>
             </div>
-            <div id="shortageBadge" class="badge ok">数量充足</div>
+            <div class="strip-badges">
+              <div id="releaseBadge" class="badge warn">待校样</div>
+              <div id="shortageBadge" class="badge ok">数量充足</div>
+            </div>
           </div>
           <div id="stage" class="stage" aria-label="排版画布"></div>
+          <div id="proofPopover" class="proof-popover" hidden></div>
         </section>
 
         <aside class="panel draft-panel">
@@ -89,6 +93,19 @@
             <h2>草稿与核对</h2>
             <span id="placedCount"></span>
           </div>
+          <div class="release-box">
+            <div class="release-line">
+              <strong id="proofProgress">0/0 已确认</strong>
+              <span id="releaseState" class="release-state pending">待校</span>
+            </div>
+            <div id="shortageList" class="shortage-list"></div>
+            <button id="releaseBtn" class="primary" type="button" disabled>放行版面</button>
+            <p id="releaseHint" class="release-hint">落字后逐格确认，全部确认才能放行导出。</p>
+          </div>
+          <h3>逐格校样</h3>
+          <div id="proofList" class="proof-list"></div>
+          <div class="divider"></div>
+          <h3>字模用量</h3>
           <div id="usageList" class="usage-list"></div>
           <div class="divider"></div>
           <h3>已保存草稿</h3>
@@ -96,6 +113,8 @@
         </aside>
       </section>
     </main>
+
+    <div id="toast" class="toast" role="status" hidden></div>
 
     <script src="app.js"></script>
   </body>
